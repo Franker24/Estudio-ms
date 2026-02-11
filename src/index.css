@@ -1,0 +1,33 @@
+/* 1. Reset para que no haya espacios blancos extraños */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Evitar el scroll horizontal que a veces causan los bloques de 100vw */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* 3. Hacer que las secciones se adapten a móviles automáticamente */
+@media (max-width: 768px) {
+  /* Achica los títulos grandes en celulares */
+  h1, h2 {
+    font-size: 1.8rem !important;
+    letter-spacing: 2px !important;
+  }
+
+  /* Si usas flexbox en filas, esto las pone en columna en celular */
+  .footer-content, .form-row {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth; /* Para que al navegar entre solapas el salto no sea brusco */
+}
