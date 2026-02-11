@@ -59,10 +59,7 @@ const Presentacion = () => {
 
       <div style={{ marginBottom: '80px' }}>
         <p style={bioTextStyle}>
-          El estudio está liderado por su titular, la <strong>Contadora Magdalena Sniegocki</strong>, 
-          egresada de la Universidad de Buenos Aires con más de 25 años de trayectoria. 
-          Consolidamos un equipo multidisciplinario capaz de brindar soluciones proactivas 
-          en un entorno económico en constante evolución.
+          El estudio esta dirigido por su titular Cdora Magdalena Sniegocki egresada de la UBA con más de 25 años de ejercicio profesional  y en su staff cuenta con profesionales jóvenes dinámicos capacitados para ofrecer sus servicios al cliente en forma satisfactoria y eficiente en las siguientes Areas: Contable- auditoria, impositiva, sociedades, procedimiento y control interno, judicial, laboral, previsional,marketing, redes sociales, consultoria.
         </p>
 
         {/* Bloques Misión / Visión con Hover */}
@@ -106,8 +103,8 @@ const Presentacion = () => {
                 transition: 'color 0.5s'
               }}>
                 {tipo === 'Misión' 
-                  ? "Brindar soluciones de negocios proactivas con alto valor agregado, confiables y diseñadas estrictamente a la medida del Cliente, generando valor sostenible en el tiempo."
-                  : "Ser una organización de referencia en la provisión de soluciones integrales y efectivas, con una capacidad competitiva que logre trascender generaciones."}
+                  ? "Es brindar en forma proactiva soluciones de negocios con alto valor agregado, confiables y diseñadas a la medida del Cliente; integrando personas, procesos, productos y servicios profesionales interdisciplinarios, sobre la base de una relación con el Cliente afirmada en la confianza y el compromiso, generando valor sostenible en el tiempo acompañando en el crecimiento y planeamiento de la actividad."
+                  : "Es ser una organización orientada al Cliente  para la provisión de soluciones integrales y efectivas a la empresas, con capacidad competitiva , que logre con su accionar trascender en el tiempo."}
               </p>
             </div>
           ))}
