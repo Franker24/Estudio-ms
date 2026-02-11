@@ -19,7 +19,7 @@ const ContactForm = () => {
       .then(() => {
         setStatus('success');
         form.current.reset();
-        setTimeout(() => setStatus('idle'), 5000); // Vuelve al estado inicial tras 5 seg
+        setTimeout(() => setStatus('idle'), 5000); 
       }, (error) => {
         console.error('Error de EmailJS:', error);
         setStatus('error');
