@@ -82,7 +82,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
   const tabs = [
     { id: 'presentacion', label: 'Inicio' },
     { id: 'servicios', label: 'Servicios' },
-    { id: 'novedades', label: 'Novedades' },
+    // { id: 'novedades', label: 'Novedades' }, // <--- BOTÓN DESHABILITADO EN EL MENÚ
     { id: 'contacto', label: 'Contacto' }
   ];
 

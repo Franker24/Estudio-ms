@@ -2,12 +2,12 @@ import React from 'react';
 
 const Footer = () => {
   const footerContainerStyle = {
-    backgroundColor: '#050505', // Un negro con más profundidad
-    color: '#ffffff',
+    backgroundColor: '#DCF8C6', // Verde clarito WhatsApp
+    color: '#000000', // Letras en negro
     width: '100%',
-    padding: '100px 0 40px 0', // Más aire superior para mayor elegancia
+    padding: '100px 0 40px 0',
     boxSizing: 'border-box',
-    borderTop: '1px solid #1a1a1a',
+    borderTop: '1px solid rgba(0,0,0,0.05)', // Borde sutil
     fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
     marginTop: '100px',
   };
@@ -35,12 +35,13 @@ const Footer = () => {
     letterSpacing: '4px',
     textTransform: 'uppercase',
     margin: '0 0 10px 0',
+    color: '#000000',
   };
 
   const subtitleStyle = {
     fontSize: '0.7rem',
     letterSpacing: '3px',
-    color: '#555', // Gris más oscuro para jerarquía visual
+    color: '#333', // Gris oscuro para contraste sobre verde
     textTransform: 'uppercase',
     fontWeight: '700'
   };
@@ -49,7 +50,7 @@ const Footer = () => {
     fontSize: '0.65rem',
     textTransform: 'uppercase',
     letterSpacing: '2px',
-    color: '#444',
+    color: '#444', // Gris oscuro
     marginBottom: '15px',
     display: 'block'
   };
@@ -57,9 +58,9 @@ const Footer = () => {
   const infoStyle = {
     fontSize: '0.9rem',
     letterSpacing: '0.5px',
-    color: '#aaa', // Texto suave para no saturar
+    color: '#1a1a1a', // Negro casi puro para lectura clara
     lineHeight: '1.8',
-    fontWeight: '300'
+    fontWeight: '400'
   };
 
   const copyrightSectionStyle = {
@@ -67,7 +68,7 @@ const Footer = () => {
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: '30px',
-    borderTop: '1px solid #111',
+    borderTop: '1px solid rgba(0,0,0,0.1)', // Línea divisoria suave
     flexWrap: 'wrap',
     gap: '20px'
   };
@@ -96,9 +97,10 @@ const Footer = () => {
         <div style={copyrightSectionStyle}>
           <div style={{
             fontSize: '0.65rem',
-            color: '#333',
+            color: '#000',
             letterSpacing: '2px',
-            textTransform: 'uppercase'
+            textTransform: 'uppercase',
+            opacity: 0.8
           }}>
             © {new Date().getFullYear()} MS & ASOC. — Profesionales en Ciencias Económicas
           </div>
@@ -107,8 +109,9 @@ const Footer = () => {
             fontSize: '0.6rem',
             letterSpacing: '3px',
             textTransform: 'uppercase',
-            color: '#444',
-            fontStyle: 'italic'
+            color: '#000',
+            fontStyle: 'italic',
+            opacity: 0.7
           }}>
             Excelencia en Asesoramiento Corporativo
           </div>

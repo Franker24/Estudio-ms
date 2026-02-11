@@ -1,15 +1,13 @@
 import React from 'react';
 import ContactForm from '../components/ContactForm';
 
-const Contacto = ({ darkMode }) => {
+const Contacto = () => {
   const containerStyle = {
     width: '100%',
     fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
-    backgroundColor: darkMode ? '#121212' : '#ffffff',
-    transition: 'background-color 0.4s ease'
   };
 
   const formSectionStyle = {
@@ -26,38 +24,38 @@ const Contacto = ({ darkMode }) => {
     fontSize: '2.2rem',
     fontWeight: '300',
     marginBottom: '50px',
-    // Color de título dinámico
-    color: darkMode ? '#ffffff' : '#1a1a1a',
+    color: '#1a1a1a',
     textTransform: 'uppercase',
-    letterSpacing: '3px',
-    transition: 'color 0.4s ease'
+    letterSpacing: '3px'
   };
 
+  // ESTE BLOQUE AHORA OCUPA TODO EL ANCHO DE LA PANTALLA
   const footerInfoStyle = {
-    // En modo oscuro usamos un gris casi negro para diferenciarlo del body
-    backgroundColor: darkMode ? '#0a0a0a' : '#000000',
-    color: '#ffffff',
+    backgroundColor: '#DCF8C6',
+    color: '#000000',
     padding: '80px 20px', 
     textAlign: 'center',
+    
+    // Magia para ocupar el 100% del ancho rompiendo el contenedor padre
     width: '100vw',
     position: 'relative',
     left: '50%',
     right: '50%',
     marginLeft: '-50vw',
     marginRight: '-50vw',
+    
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     boxSizing: 'border-box',
-    // Borde superior sutilmente más claro en dark mode
-    borderTop: darkMode ? '1px solid #222' : '1px solid #333',
+    borderTop: '1px solid #333',
     marginTop: 'auto' 
   };
 
   const whatsappInsideStyle = {
     position: 'absolute',
     bottom: '40px',
-    right: 'min(40px, 5%)',
+    right: 'min(40px, 5%)', // Se ajusta en pantallas muy anchas
     backgroundColor: '#25d366',
     width: '60px',
     height: '60px',
@@ -76,12 +74,12 @@ const Contacto = ({ darkMode }) => {
       <div style={formSectionStyle}>
         <h2 style={titleStyle}>Formulario de Contacto</h2>
         <div style={{ maxWidth: '750px', margin: '0 auto' }}>
-          {/* Es importante que ContactForm también reciba darkMode si tiene estilos propios */}
-          <ContactForm darkMode={darkMode} />
+          <ContactForm />
         </div>
       </div>
 
       <div style={footerInfoStyle}>
+        {/* Contenedor interno para que el texto no se estire a los bordes */}
         <div style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
           <h3 style={{ 
             textTransform: 'uppercase', 
@@ -106,39 +104,41 @@ const Contacto = ({ darkMode }) => {
           </p>
           
           <div style={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
-            gap: '50px', 
-            fontSize: '0.9rem',
-            letterSpacing: '1px',
-            textTransform: 'uppercase',
-            // El separador interno también cambia
-            borderTop: darkMode ? '1px solid #2a2a2a' : '1px solid #222',
-            paddingTop: '30px',
-            flexWrap: 'wrap'
-          }}>
-            <p style={{ margin: '5px 0' }}>
-                <strong style={{ color: darkMode ? '#aaa' : '#888' }}>Tel:</strong> +54 9 11 1234-5678
-            </p>
-            <p style={{ margin: '5px 0' }}>
-                <strong style={{ color: darkMode ? '#aaa' : '#888' }}>Email:</strong> contacto@estudio.com
-            </p>
-            <p style={{ 
-                fontSize: '0.95rem', 
-                maxWidth: '650px', 
-                margin: '0 auto 35px auto', 
-                opacity: '0.7',
-                lineHeight: '1.6',
-                fontWeight: '300',
-                width: '100%' // Asegura que el horario ocupe su propia línea si es necesario
-            }}>
-                Horario de atención de lunes a viernes de 10 a 18 hs
-            </p>
-          </div>
+  display: 'flex', 
+  justifyContent: 'center', 
+  gap: '50px', 
+  fontSize: '0.9rem',
+  letterSpacing: '1px',
+  textTransform: 'uppercase',
+  borderTop: '1px solid #222',
+  paddingTop: '30px',
+  flexWrap: 'wrap' 
+}}>
+  <p style={{ margin: '5px 0' }}>
+    <strong style={{ color: '#888' }}>Tel:</strong> +54 9 011 5 322 1764
+  </p>
+  
+  <p style={{ margin: '5px 0' }}>
+    <strong style={{ color: '#888' }}>Email:</strong> contacto@msestudiocontable.com
+  </p>
+
+  {/* Solo se achicó el fontSize de este bloque */}
+  <p style={{ 
+      fontSize: '0.65rem', // Letras pequeñas
+      maxWidth: '650px', 
+      margin: '5px 0', 
+      opacity: '0.7',
+      lineHeight: '1.6',
+      fontWeight: '300'
+    }}         
+  >
+    Horario de atención de lunes a viernes de 10 a 18 hs
+  </p>
+</div>
         </div>
 
         <a 
-          href="https://wa.me/5491112345678" 
+          href="https://wa.me/5491153221764" 
           target="_blank" 
           rel="noopener noreferrer" 
           style={whatsappInsideStyle}
@@ -154,4 +154,4 @@ const Contacto = ({ darkMode }) => {
   );
 };
 
-export default Contacto;
+export default Contacto;  

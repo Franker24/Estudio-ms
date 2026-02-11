@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 // Importación de Secciones
 import Presentacion from './sections/Presentacion';
 import Servicios from './sections/Servicios';
-import Novedades from './sections/Novedades';
+// import Novedades from './sections/Novedades'; // <--- SECCIÓN DESHABILITADA
 import Contacto from './sections/Contacto';
 
 // --- COMPONENTE LOADER ---
@@ -19,7 +19,7 @@ const Loader = ({ onFinish }) => {
   useEffect(() => {
     const timerFade = setTimeout(() => {
         setFadeOut(true);
-        if(onFinish) onFinish(); // Avisamos que el contenido ya puede entrar
+        if(onFinish) onFinish();
     }, 1200);
     
     const timerRemove = setTimeout(() => setShow(false), 1700);
@@ -73,7 +73,7 @@ const Loader = ({ onFinish }) => {
 
 function App() {
   const [activeTab, setActiveTab] = useState('presentacion');
-  const [contentVisible, setContentVisible] = useState(false); // Estado para la entrada de contenido
+  const [contentVisible, setContentVisible] = useState(false);
 
   const layoutStyle = {
     display: 'flex',
@@ -85,7 +85,6 @@ function App() {
     margin: 0,
     padding: 0,
     overflowX: 'hidden',
-    // --- EFECTO DE ENTRADA ---
     opacity: contentVisible ? 1 : 0,
     transform: contentVisible ? 'translateY(0)' : 'translateY(20px)',
     transition: 'opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1)'
@@ -111,7 +110,6 @@ function App() {
 
   return (
     <>
-      {/* El Loader avisa cuando está desapareciendo para mostrar el contenido */}
       <Loader onFinish={() => setContentVisible(true)} />
 
       <div style={layoutStyle}>
@@ -150,7 +148,7 @@ function App() {
           <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
             {activeTab === 'presentacion' && <Presentacion />}
             {activeTab === 'servicios' && <Servicios />}
-            {activeTab === 'novedades' && <Novedades />}
+            {/* {activeTab === 'novedades' && <Novedades />} <--- RENDER COMENTADO */}
             {activeTab === 'contacto' && <Contacto />}
           </div>
         </main>
