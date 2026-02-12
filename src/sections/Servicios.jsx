@@ -3,144 +3,134 @@ import React, { useState } from 'react';
 const Servicios = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [aguilarHoveredIdx, setAguilarHoveredIdx] = useState(null);
+  const [isAguilarHovered, setIsAguilarHovered] = useState(false);
   const [selectedArea, setSelectedArea] = useState(null);
+  const [modalTop, setModalTop] = useState(0);
 
-  const containerStyle = {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '100px 20px',
-    fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-    color: '#000',
-    scrollMarginTop: '100px' 
+  const handleOpenDetail = (area) => {
+    if (selectedArea && selectedArea.titulo === area.titulo && window.innerWidth <= 768) {
+      setSelectedArea(null);
+      return;
+    }
+    const scrollPosition = window.scrollY;
+    setModalTop(scrollPosition);
+    setSelectedArea(area);
   };
-
-  const gridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-    gap: '35px',
-  };
-
-  const getBoxStyle = (index) => ({
-    backgroundColor: hoveredIndex === index ? '#DCF8C6' : '#fff',
-    padding: '50px 40px',
-    borderRadius: '16px', 
-    border: hoveredIndex === index ? '1px solid #DCF8C6' : '1px solid #f0f0f0',
-    boxShadow: hoveredIndex === index 
-      ? '0 25px 50px -12px rgba(0, 0, 0, 0.1)' 
-      : '0 10px 20px -5px rgba(0, 0, 0, 0.04)',
-    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-    transform: hoveredIndex === index ? 'translateY(-12px)' : 'translateY(0)',
-    position: 'relative',
-    cursor: 'pointer',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    minHeight: '280px',
-    overflow: 'hidden'
-  });
 
   const areas = [
     { 
       titulo: "Auditoría y Contabilidad", 
-      desc: "Gestión rigurosa de estados contables y procesos de control.", 
-      items: ["Balances", "Certificaciones", "Inventarios"],
       introduccion: "Brindamos soluciones integrales en materia contable y de auditoría. Nuestro equipo especializado garantiza la organización y el análisis de la información financiera de tu empresa.",
       detalle: [
         "Contabilidad de empresas.", "Auditoría de balances.", "Análisis y auditoría de estados contables.",
-        "Toma de inventario y controles de stocks.", "Certificaciones contables.", "Asesoramiento en procedimientos administrativos."
+        "Toma de inventario y controles de stocks.", "Certificaciones contables.", 
+        "Asesoramiento sobre preparación y confección de estados contables.",
+        "Asesoramiento en circuitos y procedimientos administrativos."
       ]
     },
     { 
       titulo: "Área Impositiva", 
-      desc: "Optimización de la carga tributaria y cumplimiento normativo.", 
-      items: ["IVA / Ganancias", "Monotributo", "Planificación"],
-      introduccion: "Nos encargamos de gestionar y optimizar el cumplimiento de tus obligaciones fiscales minimizando riesgos dentro del marco legal.",
+      introduccion: "Nos encargamos de gestionar y optimizar el cumplimiento de tus obligaciones fiscales minimizando riesgos y maximizando beneficios dentro del marco legal.",
       detalle: [
-        "Confección de DDJJ.", "Liquidación de Impuestos Nacionales y Provinciales.", "Atención de inspecciones ARCA-DGI.",
-        "Planificación e Ingeniería tributaria.", "Moratorias y Planes de pago."
+        "Asesoramiento y confección de declaraciones juradas.", "Asesoramiento en inscripción, modificaciones y bajas.",
+        "Liquidación de Impuestos Nacionales, Provinciales y Municipales.",
+        "Liquidación de regímenes nacionales y provinciales de retenciones.", "Atención de inspecciones ARCA-DGI, DPR, DGR.",
+        "Contestación de requerimientos, intimaciones y sumarios.", "Recursos administrativos por infracciones.",
+        "Asesoramiento en Ley Penal Tributaria.", "Moratorias y Planes de Facilidades de Pago.", "Planificación e Ingeniería tributaria."
       ]
     },
     { 
       titulo: "Área Societaria", 
-      desc: "Asesoramiento integral en la vida jurídica de las organizaciones.", 
-      items: ["Constitución", "Actas", "Rúbrica de Libros"],
-      introduccion: "Ofrecemos asesoramiento integral para la constitución y administración de sociedades en cada etapa de su ciclo.",
+      introduccion: "Ofrecemos asesoramiento integral para la constitución, reorganización y administración de sociedades en cada etapa de su ciclo.",
       detalle: [
-        "Constitución y disolución de sociedades.", "Trámites ante IGJ y DPPJ.", 
-        "Elaboración de actas de directorio.", "Rúbrica de libros contables."
+        "Asesoramiento en constitución, funcionamiento y disolución.", "Inscripciones en IGJ y DPPJ.",
+        "Elaboración de actas de órganos de dirección y administración.", "Gestión de rúbrica de libros contables y societarios.",
+        "Recursos y trámites ante IGJ y DPPJ."
       ]
     },
     { 
       titulo: "Administrativo Contable", 
-      desc: "Estructuración de flujos eficientes para la toma de decisiones.", 
-      items: ["Cashflow", "Informes", "Circuitos IT"],
       introduccion: "Facilitamos la gestión diaria de las operaciones contables y administrativas con un enfoque práctico y profesional.",
       detalle: [
-        "Reorganización administrativa.", "Implementación de controles internos.", 
-        "Conciliaciones bancarias y de proveedores.", "Informes de rentabilidad y cash flow."
+        "Reorganización administrativa.", "Implementación de controles internos.", "Conciliaciones contables.",
+        "Controles de stocks generales y por sectores.", "Implementación de sistemas informáticos.",
+        "Informes de ventas, compras, gastos, flujo de fondos, stocks, cash flow.", "Emisión periódica de informes económicos y financieros."
       ]
     },
     { 
       titulo: "Laboral - Previsional", 
-      desc: "Gestión experta de nóminas y relaciones laborales.", 
-      items: ["Sueldos", "Cargas Sociales", "Libro Digital"],
-      introduccion: "Asistimos a empresas en todos los aspectos relacionados con la legislación laboral y previsional vigente.",
+      introduccion: "Asistimos a empresas y trabajadores en todos los aspectos relacionados con la legislación laboral y previsional.",
       detalle: [
-        "Liquidación de sueldos y jornales.", "Libro de sueldos digital.", 
-        "Declaraciones juradas de aportes.", "Atención de inspecciones del Ministerio de Trabajo."
+        "Liquidación de sueldos y jornales e impresión de recibos.", "Libro de sueldos digital y Art. 52 Ley 20744.", "Inscripción a organismos (ARCA, ART, Sindicatos).",
+        "Declaraciones juradas de aportes y contribuciones.", "Atención de inspecciones previsionales.",
+        "Recursos de impugnación de deuda.", "Asesoramiento en Ley Penal Previsional.", "Aportes autónomos y Moratorias.",
+        "Liquidación de ART y seguros obligatorios."
       ]
     },
     { 
       titulo: "Área Consultoría", 
-      desc: "Visión estratégica para el crecimiento y maduración del negocio.", 
-      items: ["Finanzas", "Estrategia", "RRHH"],
-      introduccion: "Te ayudamos a planificar estrategias que impulsen el crecimiento de tu negocio mediante análisis personalizado.",
+      introduccion: "Te ayudamos a planificar y ejecutar estrategias que impulsen el crecimiento de tu negocio mediante un análisis personalizado.",
       detalle: [
-        "Finanzas corporativas.", "Marketing estratégico.", "Gestión de calidad.", 
-        "Seguridad informática.", "Sustentabilidad empresarial."
+        "Finanzas corporativas.", "Recursos humanos y comunicación.", "Marketing estratégico y manejo de redes.",
+        "Operaciones y gestión de calidad.", "Sustentabilidad.", "Seguridad informática.", "Sector financiero.", "Encuestas de remuneraciones."
       ]
     }
   ];
 
   return (
-    <div id="nuestros-servicios" style={containerStyle}>
-      {/* MODAL DETALLE ACTUALIZADO: SIN FONDO VERDE EN TEXTOS */}
+    <div 
+      id="nuestros-servicios" 
+      style={{ 
+        maxWidth: '1200px', 
+        margin: '0 auto', 
+        padding: '80px 20px', 
+        fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+        position: 'relative'
+      }}
+    >
+      
+      {/* DETALLE WEB */}
       {selectedArea && (
         <div 
           onClick={() => setSelectedArea(null)}
+          className="modal-desktop-only"
           style={{
-            position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.7)', 
-            backdropFilter: 'blur(10px)',
-            zIndex: 20000, display: 'flex', justifyContent: 'center', alignItems: 'center',
-            padding: '20px'
+            position: 'absolute', 
+            top: 0, left: '-50vw', right: '-50vw',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.08)', 
+            backdropFilter: 'blur(3px)', 
+            zIndex: 99999, 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'flex-start',
+            paddingTop: `${modalTop - 150}px` 
           }}
         >
           <div 
             onClick={e => e.stopPropagation()}
             style={{
-              backgroundColor: '#fff', padding: '50px', borderRadius: '24px',
-              maxWidth: '750px', width: '100%', maxHeight: '85vh', overflowY: 'auto',
-              position: 'relative', boxShadow: '0 40px 100px rgba(0,0,0,0.3)',
-              animation: 'modalSlideUp 0.4s ease-out'
+              backgroundColor: '#fff', padding: '45px', borderRadius: '28px',
+              maxWidth: '650px', width: '95%',
+              position: 'relative',
+              marginTop: '100px',
+              boxShadow: '0 40px 100px rgba(0,0,0,0.12)',
+              border: '1px solid #f0f0f0',
+              animation: 'modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)'
             }}
           >
             <button 
               onClick={() => setSelectedArea(null)}
               style={{ position: 'absolute', top: '25px', right: '25px', background: '#f5f5f5', border: 'none', width: '35px', height: '35px', borderRadius: '50%', cursor: 'pointer', fontWeight: 'bold' }}
             >✕</button>
-            
-            <span style={{ textTransform: 'uppercase', letterSpacing: '4px', fontSize: '0.65rem', color: '#999', fontWeight: '700' }}>Detalle de Área</span>
-            <h2 style={{ fontSize: '2.4rem', margin: '10px 0 25px 0', fontWeight: '700', letterSpacing: '-1px' }}>{selectedArea.titulo}</h2>
-            
-            <p style={{ lineHeight: '1.8', color: '#444', fontSize: '1.1rem', marginBottom: '35px', borderLeft: '4px solid #DCF8C6', paddingLeft: '20px' }}>
+            <h2 style={{ fontSize: '2.2rem', marginBottom: '20px', fontWeight: '700', color: '#111' }}>{selectedArea.titulo}</h2>
+            <p style={{ lineHeight: '1.7', color: '#444', fontSize: '1.1rem', marginBottom: '30px', borderLeft: '5px solid #DCF8C6', paddingLeft: '20px' }}>
               {selectedArea.introduccion}
             </p>
-
             <ul style={{ listStyle: 'none', padding: 0 }}>
               {selectedArea.detalle.map((punto, i) => (
-                <li key={i} style={{ padding: '15px 0', borderBottom: '1px solid #f0f0f0', display: 'flex', fontSize: '1rem', color: '#1a1a1a' }}>
-                  <span style={{ color: '#DCF8C6', marginRight: '15px', fontWeight: 'bold', fontSize: '1.2rem' }}>•</span>{punto}
+                <li key={i} style={{ padding: '14px 0', borderBottom: '1px solid #f5f5f5', display: 'flex', fontSize: '1.05rem', color: '#333', alignItems: 'baseline' }}>
+                  <span style={{ color: '#9ceba5', marginRight: '15px', fontSize: '1.2rem' }}>✔</span>{punto}
                 </li>
               ))}
             </ul>
@@ -149,86 +139,126 @@ const Servicios = () => {
       )}
 
       {/* CABECERA */}
-      <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-        <span style={{ textTransform: 'uppercase', letterSpacing: '6px', fontSize: '0.7rem', color: '#666', fontWeight: '600' }}>Especialidades</span>
-        <h2 style={{ fontSize: 'clamp(2.2rem, 5vw, 2.8rem)', fontWeight: '700', letterSpacing: '-1.5px', marginTop: '10px' }}>Servicios Profesionales</h2>
+      <div style={{ textAlign: 'center', marginBottom: '70px' }}>
+        <h2 className="main-title" style={{ fontSize: '2.8rem', fontWeight: '800', letterSpacing: '-1px' }}>Servicios Profesionales</h2>
       </div>
 
-      {/* GRID DE SERVICIOS */}
-      <div style={gridStyle}>
+      {/* GRID DE ÁREAS */}
+      <div className="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px' }}>
         {areas.map((area, index) => (
-          <div 
-            key={index} 
-            style={getBoxStyle(index)}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            onClick={() => setSelectedArea(area)}
-          >
-            <div>
-              <div style={{ fontSize: '0.75rem', fontWeight: '700', color: hoveredIndex === index ? '#000' : '#ccc', marginBottom: '20px', transition: 'color 0.5s' }}>
-                [ 0{index + 1} ]
+          <React.Fragment key={index}>
+            <div 
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              onClick={() => handleOpenDetail(area)}
+              style={{
+                backgroundColor: (selectedArea?.titulo === area.titulo || hoveredIndex === index) ? '#DCF8C6' : '#fff',
+                padding: '60px 40px', borderRadius: '20px', border: '1px solid #eee',
+                boxShadow: hoveredIndex === index ? '0 25px 50px rgba(0,0,0,0.06)' : '0 10px 30px rgba(0,0,0,0.02)',
+                transition: 'all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)', 
+                transform: hoveredIndex === index ? 'translateY(-10px)' : 'translateY(0)',
+                cursor: 'pointer', minHeight: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center'
+              }}
+            >
+              <h3 className="card-title" style={{ fontSize: '1.6rem', fontWeight: '750', color: '#111', margin: 0 }}>{area.titulo}</h3>
+            </div>
+
+            {selectedArea?.titulo === area.titulo && (
+              <div className="detail-responsive-inline">
+                <div style={{ 
+                  backgroundColor: '#fff', padding: '25px 20px', borderRadius: '20px', 
+                  marginTop: '-10px', marginBottom: '20px', border: '2px solid #DCF8C6',
+                  animation: 'slideDown 0.4s ease-out'
+                }}>
+                   <p style={{ lineHeight: '1.5', color: '#444', fontSize: '0.95rem', marginBottom: '20px', borderLeft: '4px solid #9ceba5', paddingLeft: '15px' }}>
+                    {area.introduccion}
+                  </p>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    {area.detalle.map((punto, i) => (
+                      <li key={i} style={{ padding: '10px 0', borderBottom: '1px solid #f5f5f5', display: 'flex', fontSize: '0.85rem', color: '#333', lineHeight: '1.4' }}>
+                        <span style={{ color: '#9ceba5', marginRight: '10px', flexShrink: 0 }}>✔</span>
+                        <span style={{ overflowWrap: 'break-word' }}>{punto}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button 
+                    onClick={() => setSelectedArea(null)}
+                    style={{ width: '100%', marginTop: '20px', padding: '12px', background: '#f5f5f5', border: 'none', borderRadius: '10px', fontWeight: 'bold', cursor: 'pointer' }}
+                  >Cerrar detalle ↑</button>
+                </div>
               </div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '700', marginBottom: '20px', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                {area.titulo}
-              </h3>
-              <p style={{ color: '#000', opacity: hoveredIndex === index ? 1 : 0.6, fontSize: '0.95rem', lineHeight: '1.7', transition: 'all 0.5s' }}>
-                {area.desc}
-              </p>
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {area.items.map((item, idx) => (
-                <span key={idx} style={{ fontSize: '0.65rem', backgroundColor: hoveredIndex === index ? 'rgba(255,255,255,0.5)' : '#DCF8C6', padding: '6px 14px', borderRadius: '10px', textTransform: 'uppercase', letterSpacing: '1px', transition: 'all 0.5s' }}>
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
+            )}
+          </React.Fragment>
         ))}
 
-        {/* --- BLOQUE SERVICIO COMPLEMENTARIO (TEXTO ORIGINAL) --- */}
-        <div style={{
-          gridColumn: '1 / -1',
-          marginTop: '80px',
-          padding: '120px 60px',
-          backgroundColor: '#DCF8C6',
-          borderRadius: '24px',
-          color: '#000',
-          textAlign: 'center',
-          clipPath: 'polygon(0 5%, 100% 0, 100% 95%, 0 100%)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center'
-        }}>
-          <h3 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.4rem)', marginBottom: '30px', fontWeight: '200', textTransform: 'uppercase', letterSpacing: '6px' }}>
-            Servicio Complementario
-          </h3>
-          <p style={{ maxWidth: '850px', opacity: '0.9', fontWeight: '400', fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '50px' }}>
-            Partiendo de un relevamiento de la situación real de cada empresa, su estado de maduración y sus perspectivas de crecimiento, armamos un plan de gestión contable administrativa destinado a colaborar y complementar a su actual profesional de confianza, con estas herramientas y acciones:
-          </p>
+        {/* --- SERVICIO COMPLEMENTARIO --- */}
+        <div 
+          className="complementary-card" 
+          onMouseEnter={() => setIsAguilarHovered(true)}
+          onMouseLeave={() => setIsAguilarHovered(false)}
+          style={{ 
+            gridColumn: '1 / -1', 
+            marginTop: '60px', 
+            padding: '60px 40px', 
+            backgroundColor: isAguilarHovered ? '#DCF8C6' : '#ffffff',
+            borderRadius: '25px', 
+            textAlign: 'center', 
+            border: '1px solid #e0f2e0',
+            transition: 'all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)'
+          }}
+        >
+          <h3 className="comp-title" style={{ 
+            fontSize: '1.6rem', 
+            marginBottom: '20px', 
+            fontWeight: '750', 
+            color: '#111',
+            letterSpacing: '-0.5px' 
+          }}>Servicio Complementario</h3>
+          <p className="comp-desc" style={{ 
+            maxWidth: '800px', 
+            margin: '0 auto 40px', 
+            fontSize: '1.05rem', 
+            lineHeight: '1.6', 
+            color: '#444' 
+          }}>Partiendo de un relevamiento de la situación real de cada empresa, armamos un plan de gestión contable administrativa destinado a colaborar y complementar a su actual profesional de confianza.</p>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', width: '100%', maxWidth: '1100px', textAlign: 'left' }}>
-            {[
-              { t: "Definición del software de gestión o adecuación del existente." },
-              { t: "Diseño de circuitos operativos y de la estructura administrativa óptima." },
-              { t: "Capacitación permanente al personal administrativo y línea abierta de consultas."},
-              { t: "Asesoramiento en la presentación de documentación a distintos organismos." }
-            ].map((item, i) => (
+          <div className="comp-grid" style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', 
+            gap: '20px', 
+            maxWidth: '1200px', 
+            margin: '0 auto', 
+            textAlign: 'left' 
+          }}>
+            {["Definición del software de gestión o adecuación del existente.", "Diseño de circuitos operativos y estructura administrativa óptima.", "Capacitación permanente al personal administrativo y consultas.", "Asesoramiento en la presentación de documentación a organismos."].map((text, i) => (
               <div 
                 key={i} 
-                onMouseEnter={() => setAguilarHoveredIdx(i)}
-                onMouseLeave={() => setAguilarHoveredIdx(null)}
+                onMouseEnter={() => setAguilarHoveredIdx(i)} 
+                onMouseLeave={() => setAguilarHoveredIdx(null)} 
+                className="comp-item"
                 style={{ 
-                  padding: '30px', 
-                  borderRadius: '12px', 
-                  backgroundColor: aguilarHoveredIdx === i ? '#ffffff' : 'rgba(255, 255, 255, 0.4)', 
-                  border: '1px solid rgba(0, 0, 0, 0.05)',
+                  padding: '25px', 
+                  borderRadius: '15px', 
+                  // Cuando pasas el mouse sobre el item, se pone blanco puro. 
+                  // Si no, y la tarjeta general está en hover, es un blanco semitransparente.
+                  backgroundColor: aguilarHoveredIdx === i ? '#ffffff' : (isAguilarHovered ? 'rgba(255,255,255,0.5)' : '#f9f9f9'),
+                  transition: 'all 0.3s ease', 
+                  // Efecto de elevación y sombra solo en el item activo
                   transform: aguilarHoveredIdx === i ? 'translateY(-5px)' : 'translateY(0)',
-                  boxShadow: aguilarHoveredIdx === i ? '0 15px 30px rgba(0, 0, 0, 0.08)' : 'none',
-                  transition: 'all 0.4s ease'
+                  boxShadow: aguilarHoveredIdx === i ? '0 15px 30px rgba(0,0,0,0.08)' : 'none',
+                  border: '1px solid',
+                  borderColor: aguilarHoveredIdx === i ? '#9ceba5' : '#eee',
+                  cursor: 'default'
                 }}
               >
-                <div style={{ color: '#000', fontSize: '0.9rem', lineHeight: '1.5', fontWeight: '600' }}>
-                  {item.t}
+                <div style={{ 
+                  fontSize: '0.95rem', 
+                  fontWeight: '600', 
+                  lineHeight: '1.4', 
+                  color: aguilarHoveredIdx === i ? '#000' : '#444',
+                  transition: 'color 0.3s ease'
+                }}>
+                  {text}
                 </div>
               </div>
             ))}
@@ -237,9 +267,19 @@ const Servicios = () => {
       </div>
       
       <style>{`
-        @keyframes modalSlideUp {
-          from { transform: translateY(50px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
+        @keyframes modalPop { 0% { transform: scale(0.95); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes slideDown { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
+        .detail-responsive-inline { display: none; }
+        @media (max-width: 768px) {
+          #nuestros-servicios { padding: 40px 15px !important; }
+          .main-title { font-size: 1.8rem !important; margin-bottom: 30px !important; }
+          .modal-desktop-only { display: none !important; }
+          .detail-responsive-inline { display: block; width: 100%; grid-column: 1 / -1; }
+          .services-grid { grid-template-columns: 1fr !important; gap: 15px !important; }
+          .services-grid > div { padding: 35px 25px !important; min-height: auto !important; }
+          .card-title { font-size: 1.25rem !important; }
+          .complementary-card { padding: 40px 20px !important; margin-top: 40px !important; }
+          .comp-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
         }
       `}</style>
     </div>

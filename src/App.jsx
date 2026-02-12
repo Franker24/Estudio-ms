@@ -131,7 +131,7 @@ function App() {
                 color: '#fff', fontWeight: '300', letterSpacing: '8px', 
                 textTransform: 'uppercase', lineHeight: '1.2'
               }}>
-                Estudio <span style={{ fontWeight: '700' }}>MS & Asoc.</span>
+                Estudio <span style={{ fontWeight: '700' }}>ℳ𝒮 & 𝒜𝓈ℴ𝒸.</span>
               </h1>
               <div style={{ width: '40px', height: '2px', backgroundColor: '#fff', margin: '25px auto', opacity: '0.6' }}></div>
               <p style={{ 

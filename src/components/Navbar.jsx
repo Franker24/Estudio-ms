@@ -27,7 +27,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#ffffff',
-    padding: isMobile ? '15px 20px' : (isScrolled ? '12px 10%' : '25px 10%'),
+    padding: isMobile ? '15px 20px' : (isScrolled ? '12px 10%' : '22px 10%'),
     position: 'sticky',
     top: 0,
     zIndex: 1000,
@@ -40,18 +40,12 @@ const Navbar = ({ activeTab, onTabChange }) => {
 
   const burgerButtonStyle = {
     display: isMobile ? 'flex' : 'none',
-    alignItems: 'center',
-    justifyContent: 'center',
     background: 'none',
     border: 'none',
-    fontSize: '2.2rem',
+    fontSize: '2rem',
     cursor: 'pointer',
     color: '#000',
     padding: 0,
-    margin: 0,
-    lineHeight: 1,
-    outline: 'none',
-    marginLeft: 'auto',
     zIndex: 1001
   };
 
@@ -59,14 +53,14 @@ const Navbar = ({ activeTab, onTabChange }) => {
     display: 'flex',
     flexDirection: isMobile ? 'column' : 'row',
     position: isMobile ? 'absolute' : 'static',
-    top: isMobile ? '0' : 'auto',
+    top: 0,
     left: 0,
     width: '100%',
     height: isMobile ? '100vh' : 'auto',
     backgroundColor: '#fff',
     listStyle: 'none',
     margin: 0,
-    padding: isMobile ? '100px 0' : 0,
+    padding: isMobile ? '120px 0' : 0,
     gap: isMobile ? '30px' : '10px',
     transition: 'all 0.5s cubic-bezier(0.77,0.2,0.05,1.0)',
     transform: isMobile && !isOpen ? 'translateX(100%)' : 'translateX(0)',
@@ -74,40 +68,39 @@ const Navbar = ({ activeTab, onTabChange }) => {
     visibility: isMobile && !isOpen ? 'hidden' : 'visible'
   };
 
-  const handleTabClick = (id) => {
-    onTabChange(id);
-    setIsOpen(false);
-  };
-
   const tabs = [
     { id: 'presentacion', label: 'Inicio' },
     { id: 'servicios', label: 'Servicios' },
-    // { id: 'novedades', label: 'Novedades' }, // <--- BOTÓN DESHABILITADO EN EL MENÚ
     { id: 'contacto', label: 'Contacto' }
   ];
 
   return (
     <header style={headerContainerStyle}>
+      {/* LOGO CON CARACTERES DE CALIGRAFÍA ESPECIALES */}
       <div 
         style={{ cursor: 'pointer', zIndex: 1001 }} 
-        onClick={() => handleTabClick('presentacion')}
+        onClick={() => { onTabChange('presentacion'); window.scrollTo({top: 0, behavior: 'smooth'}); }}
       >
-        <h1 style={{ 
-          fontSize: isMobile ? '1.1rem' : '1.3rem', 
-          fontWeight: '300', 
-          letterSpacing: '3px', 
-          margin: 0, 
-          textTransform: 'uppercase',
-          color: '#000',
-          lineHeight: '1.2'
-        }}>
-          <span style={{ fontWeight: '700' }}>Ms & Asoc</span>
+        <h1 style={{ margin: 0, textAlign: 'left' }}>
+          <span style={{ 
+            fontSize: isMobile ? '1.7rem' : '2.1rem', 
+            fontWeight: 'normal', 
+            color: '#000',
+            display: 'block',
+            lineHeight: '1',
+            marginBottom: '2px'
+          }}>
+            ℳ𝒮 & 𝒜𝓈ℴ𝒸
+          </span>
           <p style={{ 
-            fontSize: '0.65rem', 
-            margin: '2px 0 0 0', 
-            letterSpacing: '1px', 
+            fontSize: '0.6rem', 
+            margin: 0, 
+            letterSpacing: '3px', 
             fontWeight: '400',
-            opacity: 0.7 
+            textTransform: 'uppercase',
+            opacity: 0.7,
+            color: '#000',
+            fontFamily: '"Helvetica Neue", sans-serif'
           }}>
             Estudio Impositivo Contable
           </p>
@@ -121,7 +114,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
       <nav style={!isMobile ? { display: 'block' } : { position: 'static' }}>
         <ul style={navListStyle}>
           {tabs.map((tab) => (
-            <li key={tab.id} style={{ position: 'relative' }}>
+            <li key={tab.id} style={{ position: 'relative', textAlign: isMobile ? 'center' : 'left' }}>
               <button 
                 style={{
                   background: 'none',
@@ -129,7 +122,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
                   color: '#000',
                   padding: '10px 20px',
                   cursor: 'pointer',
-                  fontSize: isMobile ? '1.2rem' : '0.85rem',
+                  fontSize: isMobile ? '1.4rem' : '0.85rem',
                   fontWeight: activeTab === tab.id ? '700' : '300',
                   textTransform: 'uppercase',
                   letterSpacing: '4px',
@@ -138,7 +131,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
                   transition: 'all 0.3s ease',
                   opacity: !isMobile && hoveredTab && hoveredTab !== tab.id ? 0.5 : 1
                 }} 
-                onClick={() => handleTabClick(tab.id)}
+                onClick={() => { onTabChange(tab.id); setIsOpen(false); }}
                 onMouseEnter={() => setHoveredTab(tab.id)}
                 onMouseLeave={() => setHoveredTab(null)}
               >
@@ -151,9 +144,8 @@ const Navbar = ({ activeTab, onTabChange }) => {
                     right: '20px',
                     height: '2px',
                     backgroundColor: '#000',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transition: 'all 0.3s ease',
                     transform: (activeTab === tab.id || hoveredTab === tab.id) ? 'scaleX(1)' : 'scaleX(0)',
-                    opacity: activeTab === tab.id ? 1 : 0.4
                   }}></span>
                 )}
               </button>

@@ -2,12 +2,12 @@ import React from 'react';
 
 const Footer = () => {
   const footerContainerStyle = {
-    backgroundColor: '#DCF8C6', // Verde clarito WhatsApp
-    color: '#000000', // Letras en negro
+    backgroundColor: '#DCF8C6', // Tu verde característico
+    color: '#000000',
     width: '100%',
-    padding: '100px 0 40px 0',
+    padding: '80px 0 40px 0',
     boxSizing: 'border-box',
-    borderTop: '1px solid rgba(0,0,0,0.05)', // Borde sutil
+    borderTop: '1px solid rgba(0,0,0,0.05)',
     fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
     marginTop: '100px',
   };
@@ -30,37 +30,39 @@ const Footer = () => {
   };
 
   const titleStyle = {
-    fontSize: '1.4rem',
-    fontWeight: '600',
-    letterSpacing: '4px',
-    textTransform: 'uppercase',
-    margin: '0 0 10px 0',
+    fontSize: '2rem', // Aumentado para que luzca la caligrafía
+    fontWeight: 'normal',
+    margin: '0 0 5px 0',
     color: '#000000',
+    lineHeight: '1',
   };
 
   const subtitleStyle = {
-    fontSize: '0.7rem',
+    fontSize: '0.65rem',
     letterSpacing: '3px',
-    color: '#333', // Gris oscuro para contraste sobre verde
+    color: '#333',
     textTransform: 'uppercase',
-    fontWeight: '700'
+    fontWeight: '700',
+    opacity: 0.8
   };
 
   const labelStyle = {
     fontSize: '0.65rem',
     textTransform: 'uppercase',
     letterSpacing: '2px',
-    color: '#444', // Gris oscuro
+    color: '#444',
     marginBottom: '15px',
     display: 'block'
   };
 
-  const infoStyle = {
-    fontSize: '0.9rem',
-    letterSpacing: '0.5px',
-    color: '#1a1a1a', // Negro casi puro para lectura clara
-    lineHeight: '1.8',
-    fontWeight: '400'
+  const linkStyle = {
+    display: 'block',
+    fontSize: '0.95rem',
+    color: '#000',
+    textDecoration: 'none',
+    marginBottom: '8px',
+    fontWeight: '500',
+    transition: 'opacity 0.3s'
   };
 
   const copyrightSectionStyle = {
@@ -68,56 +70,76 @@ const Footer = () => {
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: '30px',
-    borderTop: '1px solid rgba(0,0,0,0.1)', // Línea divisoria suave
+    borderTop: '1px solid rgba(0,0,0,0.1)',
     flexWrap: 'wrap',
     gap: '20px'
   };
 
   return (
-    <footer style={footerContainerStyle}>
+    <footer style={footerContainerStyle} id="contacto">
       <div style={contentWrapper}>
         
         <div style={topSectionStyle}>
-          {/* Lado Izquierdo: Branding */}
+          {/* Lado Izquierdo: Branding con Caligrafía */}
           <div>
-            <h3 style={titleStyle}>MS <span style={{fontWeight: '200'}}>&</span> ASOC.</h3>
+            <h3 style={titleStyle}>ℳ𝒮 & 𝒜𝓈ℴ𝒸.</h3>
             <div style={subtitleStyle}>Consultoría Integral & Auditoría</div>
           </div>
 
-          {/* Lado Derecho: Info de contacto formal */}
-          <div style={{ textAlign: 'right', minWidth: '250px' }}>
-            <span style={labelStyle}>Disponibilidad & Horarios</span>
-            <div style={infoStyle}>
-              Lunes a Viernes — 10:00 a 18:00 hs.
+          {/* Lado Derecho: Contacto Adaptado */}
+          <div className="footer-contact" style={{ minWidth: '250px' }}>
+            <span style={labelStyle}>Contacto Directo</span>
+            
+            <a href="tel:+5491153221764" style={linkStyle}>
+              <span style={{opacity: 0.5, marginRight: '8px'}}>Tel:</span>
+              +54 9 11 5322-1764
+            </a>
+            
+            <a href="mailto:contacto@msestudiocontable.com" style={linkStyle}>
+              <span style={{opacity: 0.5, marginRight: '8px'}}>Email:</span>
+              contacto@msestudiocontable.com
+            </a>
+
+            <div style={{ ...linkStyle, marginTop: '15px', fontSize: '0.85rem' }}>
+              <span style={{opacity: 0.5, marginRight: '8px'}}>Horarios:</span>
+              Lun a Vie — 10 a 18 hs
             </div>
           </div>
         </div>
         
-        {/* Sección Inferior: Legal y Signature */}
+        {/* Sección Inferior: Legal */}
         <div style={copyrightSectionStyle}>
           <div style={{
             fontSize: '0.65rem',
             color: '#000',
-            letterSpacing: '2px',
+            letterSpacing: '1px',
             textTransform: 'uppercase',
-            opacity: 0.8
+            opacity: 0.7
           }}>
-            © {new Date().getFullYear()} MS & ASOC. — Profesionales en Ciencias Económicas
+            © {new Date().getFullYear()} ℳ𝒮 & 𝒜𝓈ℴ𝒸. — Profesionales en Ciencias Económicas
           </div>
 
           <div style={{
             fontSize: '0.6rem',
-            letterSpacing: '3px',
+            letterSpacing: '2px',
             textTransform: 'uppercase',
             color: '#000',
-            fontStyle: 'italic',
-            opacity: 0.7
+            fontWeight: '600',
+            opacity: 0.5
           }}>
             Excelencia en Asesoramiento Corporativo
           </div>
         </div>
 
       </div>
+
+      {/* Estilos responsivos rápidos */}
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-contact { text-align: left !important; }
+          footer { padding: 60px 0 30px 0 !important; }
+        }
+      `}</style>
     </footer>
   );
 };
