@@ -82,7 +82,7 @@ const Footer = () => {
         <div style={topSectionStyle}>
           {/* Lado Izquierdo: Branding con Caligrafía */}
           <div>
-            <h3 style={titleStyle}>ℳ𝒮 & 𝒜𝓈ℴ𝒸.</h3>
+            <h3 style={titleStyle}>𝑴𝑺 & 𝑨𝒔𝒐𝒄.</h3>
             <div style={subtitleStyle}>Consultoría Integral & Auditoría</div>
           </div>
 
@@ -116,7 +116,7 @@ const Footer = () => {
             textTransform: 'uppercase',
             opacity: 0.7
           }}>
-            © {new Date().getFullYear()} ℳ𝒮 & 𝒜𝓈ℴ𝒸. — Profesionales en Ciencias Económicas
+            © {new Date().getFullYear()} 𝑴𝑺 & 𝑨𝒔𝒐𝒄. — Profesionales en Ciencias Económicas
           </div>
 
           <div style={{

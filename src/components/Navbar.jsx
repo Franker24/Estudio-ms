@@ -90,7 +90,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
             lineHeight: '1',
             marginBottom: '2px'
           }}>
-            ℳ𝒮 & 𝒜𝓈ℴ𝒸
+            𝑴𝑺 & 𝑨𝒔𝒐𝒄.
           </span>
           <p style={{ 
             fontSize: '0.6rem', 

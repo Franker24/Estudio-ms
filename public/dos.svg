@@ -1,0 +1,40 @@
+<svg width="340" height="340" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .outer-circle {
+      fill: #DCF8C6;
+    }
+    .inner-circle {
+      fill: #FFFFFF;
+    }
+    .text-top {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 42px;
+      font-weight: 600;
+      fill: #000000;
+      letter-spacing: 1px;
+    }
+    .text-bottom {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      fill: #000000;
+      letter-spacing: 5px;
+    }
+  </style>
+
+  <!-- Outer Green Circle -->
+  <circle cx="170" cy="170" r="170" class="outer-circle"></circle>
+
+  <!-- Inner White Circle -->
+  <circle cx="170" cy="170" r="145" class="inner-circle"></circle>
+
+  <!-- MS & -->
+  <text x="170" y="150" text-anchor="middle" class="text-top">
+    MS &amp;
+  </text>
+
+  <!-- ASOC -->
+  <text x="170" y="225" text-anchor="middle" class="text-bottom">
+    ASOC
+  </text>
+</svg>

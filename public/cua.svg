@@ -1,0 +1,25 @@
+<svg width="340" height="340" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .outer-circle {
+      fill: #DCF8C6;
+    }
+    .inner-circle {
+      fill: #FFFFFF;
+    }
+    .text-script {
+      font-size: 42px;
+      fill: #000000;
+    }
+  </style>
+
+  <!-- Outer Green Circle -->
+  <circle cx="170" cy="170" r="170" class="outer-circle"></circle>
+
+  <!-- Inner White Circle -->
+  <circle cx="170" cy="170" r="145" class="inner-circle"></circle>
+
+  <!-- ℳ𝒮 & 𝒜𝓈ℴ𝒸 -->
+  <text x="170" y="190" text-anchor="middle" class="text-script">
+    ℳ𝒮 &amp; 𝒜𝓈ℴ𝒸
+  </text>
+</svg>

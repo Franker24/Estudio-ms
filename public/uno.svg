@@ -1,0 +1,43 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .circle {
+      fill: white;
+      stroke: #1E293B;
+      stroke-width: 6;
+    }
+    .top-text {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      fill: #1E293B;
+      letter-spacing: 2px;
+    }
+    .bottom-text {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 26px;
+      font-weight: 400;
+      fill: #2563EB;
+      letter-spacing: 4px;
+    }
+    .divider {
+      stroke: #2563EB;
+      stroke-width: 3;
+    }
+  </style>
+
+  <!-- Outer Circle -->
+  <circle cx="150" cy="150" r="130" class="circle"></circle>
+
+  <!-- Top Text -->
+  <text x="150" y="130" text-anchor="middle" class="top-text">
+    MS &amp;
+  </text>
+
+  <!-- Divider Line -->
+  <line x1="90" y1="155" x2="210" y2="155" class="divider"></line>
+
+  <!-- Bottom Text -->
+  <text x="150" y="195" text-anchor="middle" class="bottom-text">
+    ASOC
+  </text>
+</svg>

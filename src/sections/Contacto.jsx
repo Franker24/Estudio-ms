@@ -115,7 +115,7 @@ const Contacto = () => {
   flexWrap: 'wrap' 
 }}>
   <p style={{ margin: '5px 0' }}>
-    <strong style={{ color: '#888' }}>Tel:</strong> +54 9 011 5 322 1764
+    <strong style={{ color: '#888' }}>Tel:</strong> +54 9 011 5 322 1764 
   </p>
   
   <p style={{ margin: '5px 0' }}>
